@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Watch : MonoBehaviour
+{
+    public Text txt;    //경과 시간을 출력할 text
+
+    bool activated;     //시간을 셀지 안셀지 판별하는 bool
+
+    float timeElapsed=0;//실질적 경과시간
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(activated)
+        {
+            timeElapsed += UnityEngine.Time.deltaTime; //업데이트마다 기존시간에 경과한시간만큼 더함
+            txt.text = timeElapsed.ToString("0.0");    //업데이트된 시간을 출력
+        }
+    }
+
+    public void StartWatch()
+    {
+        activated = !activated;  //시간경과를 일시정지 시키거나 다시시작하는 함수
+    }
+}
